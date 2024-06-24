@@ -1,16 +1,21 @@
 import React from 'react'
-import './Footer.css'
+import './Navbar.css'
 import kavakLogo from '../../assets/kavak.svg'
 import mxFlag from '../../assets/mx.svg'
 import { CaretDown, UserCircle } from "@phosphor-icons/react";
 
-export const Footer = () => {
+/**
+ * @returns {JSX.Element} Componente barra de navegacion
+ */
+export const Navbar = () => {
   return (
     <nav className='navegacion'>
         <div className='navbar-contenido'>
-            <div className='logo-container'>
+            {/* Logo */}
+            <div className='logo-container'>                
                 <img className='logo' src={kavakLogo} alt="" />
             </div>
+            {/* Enlaces */}
             <div className='enlaces-container'>
                 <ul>
                     <li>

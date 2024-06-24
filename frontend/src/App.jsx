@@ -1,17 +1,15 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import { Footer } from './components/Footer/Footer.jsx'
-import { SearchBar } from './components/SearchBar/SearchBar'
-import { AutomovilList } from './components/ComprarAuto/AutomovilList/AutomovilList'
-import { ComprarAuto } from './components/ComprarAuto/ComprarAuto'
+import { Navbar } from './components/Navbar/Navbar.jsx'
+import { SearchBar } from './components/SearchBar/SearchBar.jsx'
+import { ComprarAuto } from './components/ComprarAuto/ComprarAuto.jsx'
 
+/**
+ * 
+ * @returns Applicacion
+ */
 function App() {
-  const [count, setCount] = useState(0)
-
   return <>
-    <Footer/>
+    <Navbar />
     <SearchBar />
     <ComprarAuto />
   </>

@@ -1,25 +1,31 @@
 import React from 'react'
-import axios from 'axios'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { AutomovilList } from './AutomovilList/AutomovilList'
-
+import { getAutomovilesConImagenes } from '../../services/ServiceAutomovil.js'
+/**
+ * Componente para comprar automoviles
+ * @returns {JSX.Element} Componente para comprar automoviles
+ */
 export const ComprarAuto = () => {
 
+    /**
+     * Automoviles
+     */
     const [autosState, setAutosState] = useState([])
 
     useEffect(() => {
-        axios
-            .get('http://localhost:5000/get_automoviles_con_imagenes')
-            .then((response) => {
-                const data = response.data;
-                setAutosState(data.data)
-            })
-            .catch((error) => {
-                console.log('error')
-            })
+        const fetchAutomoviles = async () => {
+            try {
+                // Esperamos la respuesta
+                const data = await getAutomovilesConImagenes()
+                setAutosState(data)
+            } catch (error) {
+                console.log('Error al obtener los automoviles con las imagenes: ComprarAuto.jsx', error)
+            }
+        }
+        fetchAutomoviles()
     }, [])
-
 
     return (
         <AutomovilList automoviles={autosState} />

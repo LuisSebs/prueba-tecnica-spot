@@ -3,7 +3,9 @@ import './SearchBar.css'
 import { Form, Row, Col } from 'react-bootstrap'
 import { MagnifyingGlass } from '@phosphor-icons/react';
 
-
+/**
+ * @returns {JSX.Element} Componente barra de busqueda
+ */
 export const SearchBar = () => {
   return (
     <section>
