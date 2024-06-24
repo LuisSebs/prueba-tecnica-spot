@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_cors import CORS
 from alchemyClasses import db
 from controllers.automovil_controlador import automovil
 from controllers.imagen_controlador import imagen
@@ -14,10 +15,8 @@ app.config.from_mapping(
 )
 db.init_app(app)
 
-@app.route('/')
-def main():
-    return 'Hola mundo!'
+CORS(app)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
 
