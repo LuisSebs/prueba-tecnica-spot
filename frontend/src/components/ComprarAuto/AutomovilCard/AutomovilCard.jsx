@@ -2,10 +2,9 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { MapPin } from '@phosphor-icons/react';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import defaultImage from '../../../assets/default.jpeg'
 import './AutomovilCard.css'
 
-export const AutomovilCard = ({marca, modelo, year, kilometraje, precio}) => {
+export const AutomovilCard = ({marca, modelo, year, kilometraje, precio, imagen}) => {
 
   const formatoPrecio = (precio) => {
     // Convertir el número a cadena y agregar comas separadoras de miles
@@ -17,7 +16,7 @@ export const AutomovilCard = ({marca, modelo, year, kilometraje, precio}) => {
 
   return (
     <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={defaultImage} />
+      <Card.Img variant="top" src={imagen} />
       <Card.Body className='card-body'>
         <Card.Title className='card-title'>{marca} &bull; {modelo}</Card.Title>
         <p className='descripcion'>{year} &bull; {kilometraje} km</p>

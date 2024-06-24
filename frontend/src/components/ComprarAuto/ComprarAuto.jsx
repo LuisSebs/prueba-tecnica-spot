@@ -10,7 +10,7 @@ export const ComprarAuto = () => {
 
     useEffect(() => {
         axios
-            .get('http://localhost:5000/get_automoviles')
+            .get('http://localhost:5000/get_automoviles_con_imagenes')
             .then((response) => {
                 const data = response.data;
                 setAutosState(data.data)
