@@ -1,7 +1,10 @@
 from flask import Flask
 from alchemyClasses import db
+from controllers.automovil_controlador import automovil
 
 app = Flask(__name__)
+
+app.register_blueprint(automovil)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://sebs:sebsDev123!@localhost:3306/espot"
 app.config.from_mapping(
@@ -14,5 +17,5 @@ def main():
     return 'Hola mundo!'
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
 
