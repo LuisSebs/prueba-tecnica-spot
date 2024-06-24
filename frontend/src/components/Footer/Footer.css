@@ -1,3 +1,58 @@
+.navegacion {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-contenido{
+    display: flex;
+    width: 100%;
+    max-width: 1280px; 
+}
+
+.logo-container{
+    display: flex;
+}
+
 .logo {
-    width: 124px;
+    width: 140px;    
+}
+
+.enlaces-container{
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    padding: 20px;
+}
+
+.enlaces-container ul {
+    display: flex;
+    gap: 24px;
+}
+
+.enlaces-container li{
+    list-style: none;
+}
+
+.enlaces-container li a {
+    color: #00000095;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+.caret-down{
+    vertical-align: bottom;
+    fill: #1251ec;
+}
+
+.mxFlag{
+    width: 20px;
+    margin-left: 20px;
+}
+
+.user-circle{
+    vertical-align: middle;
+    margin-right: 16px;
 }
