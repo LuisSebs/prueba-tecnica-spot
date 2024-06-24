@@ -4,6 +4,8 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { Footer } from './components/Footer/Footer.jsx'
 import { SearchBar } from './components/SearchBar/SearchBar'
+import { AutomovilList } from './components/ComprarAuto/AutomovilList/AutomovilList'
+import { ComprarAuto } from './components/ComprarAuto/ComprarAuto'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -11,6 +13,7 @@ function App() {
   return <>
     <Footer/>
     <SearchBar />
+    <ComprarAuto />
   </>
 }
 
