@@ -15,12 +15,18 @@ export const ComprarAuto = () => {
      */
     const [autosState, setAutosState] = useState([])
 
+    /**
+     * Automoviles aux
+     */
+    const [autosStateAux, setAutosStateAux] = useState([])
+
     useEffect(() => {
         const fetchAutomoviles = async () => {
             try {
                 // Esperamos la respuesta
                 const data = await getAutomovilesConImagenes()
                 setAutosState(data)
+                setAutosStateAux(data)
             } catch (error) {
                 console.log('Error al obtener los automoviles con las imagenes: ComprarAuto.jsx', error)
             }
@@ -29,7 +35,10 @@ export const ComprarAuto = () => {
     }, [])
 
     return <>
-        <Filtrado />
-        <AutomovilList automoviles={autosState} />
+        <Filtrado 
+            autosState={ autosStateAux }
+            setAutosState={ setAutosStateAux }
+        />
+        <AutomovilList automoviles={autosStateAux} />
     </>
 }

@@ -2,13 +2,13 @@ import React from 'react'
 import { CaretDown } from '@phosphor-icons/react/dist/ssr'
 import './Filtrado.css'
 import { useState } from 'react'
+import { mergeSortPrecio } from '../../../utils/mergeSort'
 
-export const Filtrado = () => {
+export const Filtrado = ({ autosState, setAutosState }) => {
 
     const [isOrdenarPorVisible, setIsOrdenarPorVisible] = useState(false)
     const [isPrecioSelected, setIsPrecioSelected] = useState(false)
     const [isNovedadesSelected, setIsNovedadesSelected] = useState(false)
-
 
     let ordenarPor = ''
 
@@ -18,6 +18,18 @@ export const Filtrado = () => {
 
     const ordenarPorPrecio = (event) => {
         ordenarPor = 'precio'
+        const newAutos = [...autosState]
+        for (let i = 0; i < newAutos.length ; i++){
+            let a = newAutos[i]
+            console.log(a.precio)
+        }
+        mergeSortPrecio(newAutos)
+        setAutosState(newAutos)
+        console.log('------------------------------------')
+        for (let i = 0; i < newAutos.length ; i++){
+            let a = newAutos[i]
+            console.log(a.precio)
+        }
         setIsPrecioSelected(true)
         setIsNovedadesSelected(false)
         setIsOrdenarPorVisible(false)
