@@ -1,107 +1,63 @@
 /* Filtrado */
 
+.filtrado-container *{
+    margin: 0px;
+    padding: 0px;
+}
+
 .filtrado-container {
-    margin: 12px 0px 0px 0px;
-    border-top: 1px solid #1351ec;
-    border-bottom: 1px solid #1351ec;
+    margin: 16px 0px 0px 0px;
+    border-top: 1px solid #252525;
+    border-bottom: 1px solid #252525;
     display: flex;
 }
 
-.filtrado * {
-    padding: 0px;
-    margin: 0px;
+.button-filter,
+.button-sort {
+    border: none;
+    padding: 12px 25px;
+    margin: 4px 0px;
 }
 
-/*
 .filtrado {
-    width: 100%;
-}
-*/
-
-.filtrado ul {
-    list-style: none;
-}
-
-.filtrado ul li {
-    display: inline-block;
-    position: relative;
-}
-
-.filtrado ul li a {
-    display: block;
-    padding: 20px 25px;
-    color: #252525;
-    text-decoration: none;
-    text-align: center;
-}
-
-.filtrado ul li ul.dropdown li {
-    display: block;
-}
-
-.filtrado ul li ul.dropdown {
-    width: 100%;
-    position: absolute;
-    z-index: 999;
-    display: none;
-}
-
-.filtrado ul li a:hover {
-    background-color: #1351ec;
-    color: #fff;
-}
-
-.filtrado ul li:hover ul.dropdown {
-    display: block;
+    width: 1000px;
 }
 
 /* Ordenamiento */
 
-.ordenamiento * {
+.ordenamiento {
+    
+}
+
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+.dropdown-ordenar-por {
+    margin: 0px;
     padding: 0px;
+    display: block;
+    position: absolute;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    z-index: 1;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-ordenar-por button {
+    width: 100%;
+    border: none;
+    padding: 12px 25px;
     margin: 0px;
 }
 
-
-.ordenamiento {
-    width: 400px;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.ordenamiento ul {
-    list-style: none;
-}
-
-.ordenamiento ul li {
-    display: inline-block;
-    position: relative;
-}
-
-.ordenamiento ul li a {
-    display: block;
-    color: #252525;
-    padding: 20px 25px;
-    text-decoration: none;
-    text-align: center;
-}
-
-.ordenamiento ul li ul.dropdown li {
-    display: block;
-}
-
-.ordenamiento ul li ul.dropdown {
-    width: 100%;
-    position: absolute;
-    z-index: 999;
-    display: none;
-}
-
-.ordenamiento ul li a:hover {
+.dropdown-ordenar-por button:hover {
+    color: aliceblue;
     background-color: #1351ec;
-    color: #fff;
 }
 
-.ordenamiento ul li:hover ul.dropdown {
-    display: block;
+.selected {
+    color: aliceblue;
+    background-color: #1351ec;
 }

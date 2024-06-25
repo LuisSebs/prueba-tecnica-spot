@@ -5,63 +5,69 @@ import { useState } from 'react'
 
 export const Filtrado = () => {
 
-    const [textOrdenarState, setTextOrdenarState] = useState('Ordenar por')
+    const [isOrdenarPorVisible, setIsOrdenarPorVisible] = useState(false)
+    const [isPrecioSelected, setIsPrecioSelected] = useState(false)
+    const [isNovedadesSelected, setIsNovedadesSelected] = useState(false)
 
-    let filtros = []
 
-    const ordenarPorPrecio = (e) => {
-        e.preventDefault()
-        setTextOrdenarState('Precio')
+    let ordenarPor = ''
+
+    const viewOrdenarPor = (event) => {
+        setIsOrdenarPorVisible(!isOrdenarPorVisible)
+    }
+
+    const ordenarPorPrecio = (event) => {
+        ordenarPor = 'precio'
+        setIsPrecioSelected(true)
+        setIsNovedadesSelected(false)
+        setIsOrdenarPorVisible(false)
+        console.log(ordenarPor)
+
+    }
+
+    const ordenarPorNovedades = (event) => {
+        ordenarPor = 'novedades'
+        setIsNovedadesSelected(true)
+        setIsPrecioSelected(false)
+        setIsOrdenarPorVisible(false)
+        console.log(ordenarPor)
     }
 
   return (
     <div className='filtrado-container'>
-        {/* Filtrado */}
         <div className='filtrado'>
-            <ul>
-                <li>
-                    <a href="#">Marca</a>
-                    <ul className='dropdown'>
-                        <li>Toyota</li>
-                        <li>Nissan</li>
-                        <li>Tesla</li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Modelo</a>
-                    <ul className='dropdown'>
-                        <li>Avanza</li>
-                        <li>Modelo 3</li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Año</a>
-                </li>
-                <li>
-                    <a href="#">Color</a>
-                </li>
-                <li>
-                    <a href="#">Motor</a>
-                </li>
-                <li>
-                    <a href="#">Transmision</a>
-                </li>
-                <li>
-                    <a href="#">Automatica</a>
-                </li>
-            </ul>
+            <div className='dropdown-container'>
+                <button className='button-filter'>Marca</button>
+            </div>
+            <div className='dropdown-container'>
+                <button className='button-filter'>Modelo</button>
+            </div>
+            <div className='dropdown-container'>
+                <button className='button-filter'>Año</button>
+            </div>
+            <div className='dropdown-container'>
+                <button className='button-filter'>Color</button>
+            </div>
+            <div className='dropdown-container'>
+                <button className='button-filter'>Motor</button>
+            </div>
+            <div className='dropdown-container'>
+                <button className='button-filter'>Transmision</button>
+            </div>
+            <div className='dropdown-container'>
+                <button className='button-filter'>Kilometraje</button>                
+            </div>
         </div>
-        {/* Ordenamiento */}
         <div className='ordenamiento'>
-            <ul>
-                <li>
-                    <a href="#">{textOrdenarState}</a>
-                    <ul className='dropdown'>
-                        <li><a href="#"onClick={e => ordenarPorPrecio(e)}>Precio</a></li>
-                        <li><a href="#">Novedades</a></li>
-                    </ul>
-                </li>
-            </ul>
+            <div className='dropdown-container'>
+                <button className='button-sort' onClick={e => viewOrdenarPor(e)}>Ordenar por</button>
+                {isOrdenarPorVisible && 
+                <div className='dropdown-ordenar-por'>
+                    <button className={`${isPrecioSelected ? 'selected' : ''}`} onClick={e => ordenarPorPrecio(e)}>Precio</button>
+                    <button className={`${isNovedadesSelected ? 'selected' : ''}`} onClick={e => ordenarPorNovedades(e)}>Novedades</button>
+                </div>
+                }
+            </div>
         </div>
     </div>
   )
