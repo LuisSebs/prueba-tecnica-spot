@@ -8,7 +8,8 @@ export const Ordenamiento = ({ autosState, autosStateAux, setAutosStateAux }) =>
     /**Estados de interface */
     const [textOrdenarPorButton, setTextOrdenarPorButton] = useState('Ordenar Por')
     const [isOrdenarPorVisible, setIsOrdenarPorVisible] = useState(false)
-    const [isPrecioSelected, setIsPrecioSelected] = useState(false)
+    const [isBaratoSelected, setIsBaratoSelected] = useState(false)
+    const [isCaroSelected, setIsCaroSelected] = useState(false)
     const [isNovedadesSelected, setIsNovedadesSelected] = useState(false)
     const [isAntiguedadesSelected, setIsAntiguedadesSelected] = useState(false)
 
@@ -16,18 +17,35 @@ export const Ordenamiento = ({ autosState, autosStateAux, setAutosStateAux }) =>
         setIsOrdenarPorVisible(!isOrdenarPorVisible)
     }
 
-    const ordenarPorPrecio = (event) => {
+    const ordenarPorMasBarato = (event) => {
 
         const newAutos = [...autosStateAux]
-        mergeSort(newAutos,'precio')
+        mergeSort(newAutos,'precioBarato')
         setAutosStateAux(newAutos)
 
-        setIsPrecioSelected(true)
+        setIsBaratoSelected(true)
         setIsOrdenarPorVisible(false)
 
+        setIsCaroSelected(false)
         setIsNovedadesSelected(false)
         setIsAntiguedadesSelected(false)
-        setTextOrdenarPorButton('Precio')
+        setTextOrdenarPorButton('Mas barato')
+        
+    }
+
+    const ordenarPorMasCaro = (event) => {
+
+        const newAutos = [...autosStateAux]
+        mergeSort(newAutos,'precioCaro')
+        setAutosStateAux(newAutos)
+
+        setIsCaroSelected(true)
+        setIsOrdenarPorVisible(false)
+
+        setIsBaratoSelected(false)
+        setIsNovedadesSelected(false)
+        setIsAntiguedadesSelected(false)
+        setTextOrdenarPorButton('Mas caro')
         
     }
 
@@ -40,7 +58,9 @@ export const Ordenamiento = ({ autosState, autosStateAux, setAutosStateAux }) =>
         setIsNovedadesSelected(true)
         setIsOrdenarPorVisible(false)
 
-        setIsPrecioSelected(false)
+
+        setIsBaratoSelected(false)
+        setIsCaroSelected(false)
         setIsAntiguedadesSelected(false)
         setTextOrdenarPorButton('Novedades')
 
@@ -55,7 +75,8 @@ export const Ordenamiento = ({ autosState, autosStateAux, setAutosStateAux }) =>
         setIsAntiguedadesSelected(true)
         setIsOrdenarPorVisible(false)
 
-        setIsPrecioSelected(false)
+        setIsCaroSelected(false)
+        setIsBaratoSelected(false)
         setIsNovedadesSelected(false)
         setTextOrdenarPorButton('Antiguedades')
 
@@ -71,7 +92,8 @@ export const Ordenamiento = ({ autosState, autosStateAux, setAutosStateAux }) =>
             </button>
             {isOrdenarPorVisible && 
             <div className='dropdown-ordenar-por'>
-                <button className={`${isPrecioSelected ? 'selected' : ''}`} onClick={e => ordenarPorPrecio(e)}>Precio</button>
+                <button className={`${isCaroSelected ? 'selected' : ''}`} onClick={e => ordenarPorMasCaro(e)}>Mas caro</button>
+                <button className={`${isBaratoSelected ? 'selected' : ''}`} onClick={e => ordenarPorMasBarato(e)}>Mas barato</button>                
                 <button className={`${isNovedadesSelected ? 'selected' : ''}`} onClick={e => ordenarPorNovedades(e)}>Novedades</button>
                 <button className={`${isAntiguedadesSelected ? 'selected' : ''}`} onClick={e => ordenarPorAntiguedades(e)}>Antiguedades</button>
             </div>

@@ -2,13 +2,16 @@
  * Funcion que ordena un arreglo de automoviles
  * @param {Object[]} arreglo - arreglo a ordenar
  * @param {String} by - criterio para ordenar:
- *  'precio' - ordena por precio
+ *  'precioBarato' - ordena por precio (menor a mayor)
+ *  'precioCaro' - ordena por precio (mayor a menor)
  *  'fechaEntradaNuevo' - ordena por fecha de entrada (mas nuevo - mas viejo)
  *  'feachaEntradaViejo' - ordena por fecha de entrada (mas viejo - mas nuevo)
  */
 export const mergeSort = (arreglo, by) => {
-    if(by === 'precio')
-        mergeSortAux(arreglo, precio, 0, arreglo.length - 1);
+    if(by === 'precioBarato')
+        mergeSortAux(arreglo, precioBarato, 0, arreglo.length - 1);
+    else if (by === 'precioCaro')
+    mergeSortAux(arreglo, precioCaro, 0, arreglo.length - 1);
     else if (by === 'fechaEntradaNuevo')
         mergeSortAux(arreglo, fechaEntradaNuevo, 0, arreglo.length - 1);
     else if (by === 'fechaEntradaViejo')
@@ -60,6 +63,7 @@ const merge = (arreglo, by, lo, mid, hi) => {
         }
     }
 }
-const precio = (object1, object2) => object1.precio < object2.precio
+const precioBarato = (object1, object2) => object1.precio < object2.precio
+const precioCaro = (object1, object2) => object1.precio > object2.precio
 const fechaEntradaNuevo = (object1, object2) => new Date(object1.fechaEntrada) > new Date(object2.fechaEntrada)
 const fechaEntradaViejo = (object1, object2) => new Date(object1.fechaEntrada) < new Date(object2.fechaEntrada)
