@@ -1,0 +1,107 @@
+/* Filtrado */
+
+.filtrado-container {
+    margin: 12px 0px 0px 0px;
+    border-top: 1px solid #1351ec;
+    border-bottom: 1px solid #1351ec;
+    display: flex;
+}
+
+.filtrado * {
+    padding: 0px;
+    margin: 0px;
+}
+
+/*
+.filtrado {
+    width: 100%;
+}
+*/
+
+.filtrado ul {
+    list-style: none;
+}
+
+.filtrado ul li {
+    display: inline-block;
+    position: relative;
+}
+
+.filtrado ul li a {
+    display: block;
+    padding: 20px 25px;
+    color: #252525;
+    text-decoration: none;
+    text-align: center;
+}
+
+.filtrado ul li ul.dropdown li {
+    display: block;
+}
+
+.filtrado ul li ul.dropdown {
+    width: 100%;
+    position: absolute;
+    z-index: 999;
+    display: none;
+}
+
+.filtrado ul li a:hover {
+    background-color: #1351ec;
+    color: #fff;
+}
+
+.filtrado ul li:hover ul.dropdown {
+    display: block;
+}
+
+/* Ordenamiento */
+
+.ordenamiento * {
+    padding: 0px;
+    margin: 0px;
+}
+
+
+.ordenamiento {
+    width: 400px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ordenamiento ul {
+    list-style: none;
+}
+
+.ordenamiento ul li {
+    display: inline-block;
+    position: relative;
+}
+
+.ordenamiento ul li a {
+    display: block;
+    color: #252525;
+    padding: 20px 25px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.ordenamiento ul li ul.dropdown li {
+    display: block;
+}
+
+.ordenamiento ul li ul.dropdown {
+    width: 100%;
+    position: absolute;
+    z-index: 999;
+    display: none;
+}
+
+.ordenamiento ul li a:hover {
+    background-color: #1351ec;
+    color: #fff;
+}
+
+.ordenamiento ul li:hover ul.dropdown {
+    display: block;
+}

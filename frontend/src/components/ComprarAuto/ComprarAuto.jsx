@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import { AutomovilList } from './AutomovilList/AutomovilList'
 import { getAutomovilesConImagenes } from '../../services/ServiceAutomovil.js'
+import { Filtrado } from './Filtrado/Filtrado'
 /**
  * Componente para comprar automoviles
  * @returns {JSX.Element} Componente para comprar automoviles
@@ -27,7 +28,8 @@ export const ComprarAuto = () => {
         fetchAutomoviles()
     }, [])
 
-    return (
+    return <>
+        <Filtrado />
         <AutomovilList automoviles={autosState} />
-    )
+    </>
 }
