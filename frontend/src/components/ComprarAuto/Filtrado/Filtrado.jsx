@@ -1,48 +1,65 @@
 import React from 'react'
-import { CaretDown } from '@phosphor-icons/react/dist/ssr'
+import { CaretDown, CaretUp } from '@phosphor-icons/react/dist/ssr'
 import './Filtrado.css'
 import { useState } from 'react'
-import { mergeSortPrecio } from '../../../utils/mergeSort'
+import { mergeSort } from '../../../utils/mergeSort'
 
-export const Filtrado = ({ autosState, setAutosState }) => {
+export const Filtrado = ({ autosState, autosStateAux, setAutosStateAux }) => {
 
+    /**Estados de interface */
+    const [textOrdenarPorButton, setTextOrdenarPorButton] = useState('Ordenar Por')
     const [isOrdenarPorVisible, setIsOrdenarPorVisible] = useState(false)
     const [isPrecioSelected, setIsPrecioSelected] = useState(false)
     const [isNovedadesSelected, setIsNovedadesSelected] = useState(false)
-
-    let ordenarPor = ''
+    const [isAntiguedadesSelected, setIsAntiguedadesSelected] = useState(false)
 
     const viewOrdenarPor = (event) => {
         setIsOrdenarPorVisible(!isOrdenarPorVisible)
     }
 
     const ordenarPorPrecio = (event) => {
-        ordenarPor = 'precio'
-        const newAutos = [...autosState]
-        for (let i = 0; i < newAutos.length ; i++){
-            let a = newAutos[i]
-            console.log(a.precio)
-        }
-        mergeSortPrecio(newAutos)
-        setAutosState(newAutos)
-        console.log('------------------------------------')
-        for (let i = 0; i < newAutos.length ; i++){
-            let a = newAutos[i]
-            console.log(a.precio)
-        }
-        setIsPrecioSelected(true)
-        setIsNovedadesSelected(false)
-        setIsOrdenarPorVisible(false)
-        console.log(ordenarPor)
 
+        const newAutos = [...autosStateAux]
+        mergeSort(newAutos,'precio')
+        setAutosStateAux(newAutos)
+
+        setIsPrecioSelected(true)
+        setIsOrdenarPorVisible(false)
+
+        setIsNovedadesSelected(false)
+        setIsAntiguedadesSelected(false)
+        setTextOrdenarPorButton('Precio')
+        
     }
 
     const ordenarPorNovedades = (event) => {
-        ordenarPor = 'novedades'
+
+        const newAutos = [...autosStateAux]
+        mergeSort(newAutos,'fechaEntradaNuevo')
+        setAutosStateAux(newAutos)
+
         setIsNovedadesSelected(true)
-        setIsPrecioSelected(false)
         setIsOrdenarPorVisible(false)
-        console.log(ordenarPor)
+
+        setIsPrecioSelected(false)
+        setIsAntiguedadesSelected(false)
+        setTextOrdenarPorButton('Novedades')
+
+    }
+
+    const ordenarPorAntiguedades = (event) => {
+
+        const newAutos = [...autosStateAux]
+        mergeSort(newAutos,'fechaEntradaViejo')
+        setAutosStateAux(newAutos)
+
+        setIsAntiguedadesSelected(true)
+        setIsOrdenarPorVisible(false)
+
+        setIsPrecioSelected(false)
+        setIsNovedadesSelected(false)
+        setTextOrdenarPorButton('Antiguedades')
+
     }
 
   return (
@@ -72,11 +89,16 @@ export const Filtrado = ({ autosState, setAutosState }) => {
         </div>
         <div className='ordenamiento'>
             <div className='dropdown-container'>
-                <button className='button-sort' onClick={e => viewOrdenarPor(e)}>Ordenar por</button>
+                <button className='button-sort' onClick={e => viewOrdenarPor(e)}>
+                    {textOrdenarPorButton}
+                    {isOrdenarPorVisible && <CaretUp />}
+                    {!isOrdenarPorVisible && <CaretDown />}
+                </button>
                 {isOrdenarPorVisible && 
                 <div className='dropdown-ordenar-por'>
                     <button className={`${isPrecioSelected ? 'selected' : ''}`} onClick={e => ordenarPorPrecio(e)}>Precio</button>
                     <button className={`${isNovedadesSelected ? 'selected' : ''}`} onClick={e => ordenarPorNovedades(e)}>Novedades</button>
+                    <button className={`${isAntiguedadesSelected ? 'selected' : ''}`} onClick={e => ordenarPorAntiguedades(e)}>Antiguedades</button>
                 </div>
                 }
             </div>

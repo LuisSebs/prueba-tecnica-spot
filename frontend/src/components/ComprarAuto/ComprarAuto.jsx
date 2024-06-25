@@ -36,8 +36,9 @@ export const ComprarAuto = () => {
 
     return <>
         <Filtrado 
-            autosState={ autosStateAux }
-            setAutosState={ setAutosStateAux }
+            autosState={ autosState }
+            autosStateAux={ autosStateAux }
+            setAutosStateAux={ setAutosStateAux }
         />
         <AutomovilList automoviles={autosStateAux} />
     </>

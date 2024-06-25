@@ -32,6 +32,7 @@ export const AutomovilList = ({ automoviles }) => {
                       modelo={automovil.modelo}
                       year={automovil.year}
                       kilometraje={automovil.kilometraje}
+                      fechaEntrada={new Date(automovil.fechaEntrada)}
                       precio={automovil.precio}
                       imagen={tieneImagenes ? automovil.imagenes[0].imagen : defaultImage}      
                   />
