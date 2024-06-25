@@ -16,3 +16,19 @@ export const getAutomovilesConImagenes = async () => {
     throw error
   }
 }
+
+/**
+ * Funcion que solicita las marcas de los automoviles al backend y las regresa
+ * @returns {Promise<Object[]>} marcas de los automoviles
+ */
+ export const getMarcas = async () => {
+  try {
+    // Esperamos la respuesta
+    const response = await axios.get(`${API_URL}/get_marcas`)
+    return response.data.data
+  } catch (error) {
+    console.log('Error al obtener las marcas: ServiceAutomovil.js', error)
+    throw error
+  }
+}
+

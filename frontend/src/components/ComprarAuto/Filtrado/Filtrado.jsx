@@ -5,13 +5,25 @@ import { Ordenamiento } from './Ordenamiento'
 import { useState } from 'react'
 import { MarcaButton } from './MarcaButton'
 import { useEffect } from 'react'
+import { getMarcas } from '../../../services/ServiceAutomovil'
 
 export const Filtrado = ({ autosState, autosStateAux, setAutosStateAux }) => {
 
     const [isMarcaVisible, setIsMarcaVisible] = useState(false)
     const [filtrosMarcaState, setFiltrosMarcaState] = useState(new Set())
+    const [marcasState, setMarcasState] = useState([])
 
     useEffect(() => {
+        const fetchMarcas = async () => {
+            try {
+                // Esperamos la respuesta
+                const data = await getMarcas()
+                setMarcasState(data)
+            } catch (error) {
+                console.log('Error al obtener los automoviles con las imagenes: ComprarAuto.jsx', error)
+            }
+        }
+        fetchMarcas()
         console.log(filtrosMarcaState)
     }, [filtrosMarcaState])
 
@@ -27,19 +39,18 @@ export const Filtrado = ({ autosState, autosStateAux, setAutosStateAux }) => {
                     onClick={toggleMarca}
                 >
                     Marca
-                    <CaretDown />
+                    {isMarcaVisible && <CaretUp />}
+                    {!isMarcaVisible && <CaretDown />}
                 </button>
-                <div className='dropdown-values'>
-                    <MarcaButton 
-                        filtrosMarcaState={filtrosMarcaState}
-                        setFiltrosMarcaState={setFiltrosMarcaState}
-                        marca='Tesla' 
-                    />
-                    <MarcaButton 
-                        filtrosMarcaState={filtrosMarcaState}
-                        setFiltrosMarcaState={setFiltrosMarcaState}
-                        marca='Toyota' 
-                    />
+                <div className={`${!isMarcaVisible ? 'hidden' : 'dropdown-values'}`}>
+                    {marcasState.map((marca, index) => {
+                        return  <MarcaButton 
+                                    key={index}
+                                    filtrosMarcaState={filtrosMarcaState}
+                                    setFiltrosMarcaState={setFiltrosMarcaState}
+                                    marca={marca}
+                                />
+                    })}
                 </div>
             </div>
             <div className='dropdown-container'>

@@ -57,6 +57,10 @@
     background-color: #1351ec;
 }
 
+.hidden {
+    display: none;
+}
+
 /* Filtros */
 
 .dropdown-values {

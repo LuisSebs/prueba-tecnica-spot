@@ -51,3 +51,11 @@ def get_automoviles_con_imagen():
             }
         )
     return jsonify({ "data": automoviles_dic})
+
+@automovil.route('/get_marcas', methods=['POST', 'GET'])
+def get_marcas():
+    query = model_automovil.get_marcas()
+    marcas = [row[0] for row in query]
+    return jsonify({ "data": marcas})
+
+
