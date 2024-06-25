@@ -3,14 +3,16 @@ import { CaretDown, CaretUp } from '@phosphor-icons/react/dist/ssr'
 import './Filtrado.css'
 import { Ordenamiento } from './Ordenamiento'
 import { useState } from 'react'
-import { MarcaButton } from './MarcaButton'
 import { useEffect } from 'react'
 import { getMarcas } from '../../../services/ServiceAutomovil'
+import { ListaDesplegable } from './ListaDesplegable'
 
 export const Filtrado = ({ autosState, autosStateAux, setAutosStateAux }) => {
 
-    const [isMarcaVisible, setIsMarcaVisible] = useState(false)
+    
     const [filtrosMarcaState, setFiltrosMarcaState] = useState(new Set())
+    
+    // Marcas
     const [marcasState, setMarcasState] = useState([])
 
     useEffect(() => {
@@ -27,32 +29,15 @@ export const Filtrado = ({ autosState, autosStateAux, setAutosStateAux }) => {
         console.log(filtrosMarcaState)
     }, [filtrosMarcaState])
 
-    const toggleMarca = () => {
-        setIsMarcaVisible(!isMarcaVisible)
-    }
-
   return (
     <div className='filtrado-container'>
         <div className='filtrado'>
-            <div className='dropdown-container'>
-                <button className='button-filter'
-                    onClick={toggleMarca}
-                >
-                    Marca
-                    {isMarcaVisible && <CaretUp />}
-                    {!isMarcaVisible && <CaretDown />}
-                </button>
-                <div className={`${!isMarcaVisible ? 'hidden' : 'dropdown-values'}`}>
-                    {marcasState.map((marca, index) => {
-                        return  <MarcaButton 
-                                    key={index}
-                                    filtrosMarcaState={filtrosMarcaState}
-                                    setFiltrosMarcaState={setFiltrosMarcaState}
-                                    marca={marca}
-                                />
-                    })}
-                </div>
-            </div>
+            <ListaDesplegable 
+                titulo={'Marca'}
+                listaItemsState={marcasState}
+                filtrosState={filtrosMarcaState}
+                setFiltrosState={setFiltrosMarcaState}
+            />
             <div className='dropdown-container'>
                 <button className='button-filter'>
                     Modelo
