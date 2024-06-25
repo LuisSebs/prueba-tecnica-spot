@@ -52,12 +52,27 @@
     margin: 0px;
 }
 
-.dropdown-ordenar-por button:hover {
+.selected {
     color: aliceblue;
     background-color: #1351ec;
 }
 
-.selected {
-    color: aliceblue;
-    background-color: #1351ec;
+/* Filtros */
+
+.dropdown-values {
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    position: absolute;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    z-index: 1;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-values button {
+    width: 100%;
+    border: none;
+    padding: 12px 25px;
+    margin: 0px;    
 }
