@@ -58,4 +58,34 @@ def get_marcas():
     marcas = [row[0] for row in query]
     return jsonify({ "data": marcas})
 
+@automovil.route('/get_modelos', methods=['POST', 'GET'])
+def get_modelos():
+    query = model_automovil.get_modelos()
+    modelos = [row[0] for row in query]
+    return jsonify({ "data": modelos})
+
+@automovil.route('/get_years', methods=['POST', 'GET'])
+def get_years():
+    query = model_automovil.get_years()
+    years = [row[0] for row in query]
+    return jsonify({ "data": years})
+
+@automovil.route('/get_colores', methods=['POST', 'GET'])
+def get_colores():
+    query = model_automovil.get_colores()
+    colores = [row[0] for row in query]
+    return jsonify({ "data": colores})
+
+@automovil.route('/get_motores', methods=['POST', 'GET'])
+def get_motores():
+    query = model_automovil.get_motores()
+    motores = [row[0] for row in query]
+    return jsonify({ "data": motores})
+
+@automovil.route('/get_transmisiones', methods=['POST', 'GET'])
+def get_transmisiones():
+    query = model_automovil.get_transmisiones()
+    transmisiones = [row[0] for row in query]
+    return jsonify({ "data": transmisiones})
+
 
