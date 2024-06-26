@@ -95,3 +95,25 @@
 .list-active{
     background-color: #e0e0e0;
 }
+
+/**
+* MuestraFiltros
+*/
+
+.muestra-filtros-container{
+    width: 1280px;
+    padding: 16px 20px 0px 20px;
+}
+
+.muestra-filtros-container button{
+    margin: 0px 4px 0px 4px;
+    background-color: #fff;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    padding: 6px 4px;
+    border: none;
+    border-radius: 4px;
+}
+
+.tache {
+    fill: #1351ec;
+}

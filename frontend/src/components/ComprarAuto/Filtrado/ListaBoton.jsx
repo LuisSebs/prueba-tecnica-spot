@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 
 /**
@@ -14,19 +14,38 @@ export const ListaBoton = ({ filtrosState, setFiltrosState, texto, valor }) => {
     // Estado para saber si el boton esta activo
     const [activoState, setActivoState] = useState(false)
 
-    const toggleButton = () => {
-        // Si el valor no esta
-        if (!filtrosState.has(valor)){
-            // La agregamos
-            setFiltrosState(new Set([...filtrosState, valor]))
-        }else{
-            // En caso contrario la sacamos
-            const newSet = new Set([...filtrosState]);
-            newSet.delete(valor);
-            setFiltrosState(newSet);
+    /**
+     * Usamos useEffect para manejar el caso en el que se elimine
+     * un filtro desde el componente MostrarFiltros y asi desactivar
+     * el boton. Esto lo hacemos verificando si 
+     */
+    useEffect(() => {   
+       const checkFiltroStatus = () => {
+          if (filtrosState.has(valor)) {
+            setActivoState(true)
+        } else {
+            setActivoState(false)
         }
-        setActivoState(!activoState)      
-    }
+       }
+       checkFiltroStatus()
+    }, [filtrosState])
+
+    const toggleButton = () => {
+      // Si el filtro está, lo eliminamos
+      if (filtrosState.has(valor)) {
+        const newSet = new Set([...filtrosState]);
+        newSet.delete(valor);
+        setFiltrosState(newSet);
+      }else{
+        // Si no está, lo agregamos
+        setFiltrosState(new Set([...filtrosState, valor]))
+      }
+      /**
+       * Nota: No necesitamos activar/desactivar el boton en esta funcion
+       * debido a que en automatico se hara en la funcion del useEffect
+       * cuando se detecte que se cambia el estado del filtro.
+       */
+    }    
 
   return (
     <button className={`${activoState ? 'selected' : ''}`} onClick={ toggleButton }>{ texto }</button>

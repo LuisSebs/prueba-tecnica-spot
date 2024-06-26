@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Ordenamiento } from './Ordenamiento.jsx'
 import { ListaDesplegable } from './ListaDesplegable.jsx'
 import { getColores, getMarcas, getModelos, getMotores, getTransmisiones, getYears } from '../../../services/ServiceAutomovil.js'
+import { MuestraFiltros } from './MuestraFiltros'
 
 export const Filtrado = ({ autosState, autosStateAux, setAutosStateAux }) => {
 
@@ -31,8 +32,40 @@ export const Filtrado = ({ autosState, autosStateAux, setAutosStateAux }) => {
     const [dataLoaded, setDataLoaded] = useState(false); // Bandera datos cargados
     const [activeDropdown, setActiveDropdown] = useState(null); // Lista desplegable activa
 
-    // Guardamos los filtros que nos interesa su estado
-    const filtros = [filtrosMarcaState, filtrosModeloState, filtrosYearState, filtrosColorState, filtrosMotorState, filtrosTransmisionState]
+    // Guardamos los filtros
+    const filtros = [
+        {
+            "valores": filtrosMarcaState,
+            "setFiltro": setFiltrosMarcaState,
+            "nombre": "Marca"
+        },
+        {
+            "valores": filtrosModeloState,
+            "setFiltro": setFiltrosModeloState,
+            "nombre": "Modelo"
+        },
+        {
+            "valores": filtrosYearState,
+            "setFiltro": setFiltrosYearState,
+            "nombre": "Año"
+        },
+        {
+            "valores": filtrosColorState,
+            "setFiltro": setFiltrosColorState,
+            "nombre": "Color"
+        },
+        {
+            "valores": filtrosMotorState,
+            "setFiltro": setFiltrosMotorState,
+            "nombre": "Motor"
+        },
+        {
+            "valores": filtrosTransmisionState,
+            "setFiltro": setFiltrosTransmisionState,
+            "nombre": "Transmision"
+        }
+    ]
+
  
     useEffect(() => {
         // Consume el servicio de automovil para cargar los datos
@@ -66,7 +99,7 @@ export const Filtrado = ({ autosState, autosStateAux, setAutosStateAux }) => {
             filtrosMotorState,
             filtrosTransmisionState
         )
-    }, filtros)
+    }, filtros.map((filtro) => { return filtro.valores }))
 
     const aplicaFiltros = (filtrosMarcaState, filtrosModeloState, filtrosYearState, filtrosColorState, filtrosMotorState, filtrosTransmisionState) => {
         
@@ -131,7 +164,7 @@ export const Filtrado = ({ autosState, autosStateAux, setAutosStateAux }) => {
         setActiveDropdown(activeDropdown === dropdownName ? null : dropdownName);
     };
 
-  return (
+  return <>
     <div className='filtrado-container'>
         <div className='filtrado'>
             <ListaDesplegable
@@ -189,5 +222,8 @@ export const Filtrado = ({ autosState, autosStateAux, setAutosStateAux }) => {
             setAutosStateAux={ setAutosStateAux }
         />
     </div>
-  )
+    <MuestraFiltros 
+        filtrosDiccionario={filtros}
+    />
+  </>
 }
