@@ -2,9 +2,9 @@ import React from 'react'
 import { CaretDown, CaretUp } from '@phosphor-icons/react/dist/ssr'
 import './Filtrado.css'
 import { useState, useEffect, useRef } from 'react'
-import { getColores, getMarcas, getModelos, getMotores, getTransmisiones, getYears } from '../../../services/ServiceAutomovil.js'
 import { Ordenamiento } from './Ordenamiento.jsx'
 import { ListaDesplegable } from './ListaDesplegable.jsx'
+import { getColores, getMarcas, getModelos, getMotores, getTransmisiones, getYears } from '../../../services/ServiceAutomovil.js'
 
 export const Filtrado = ({ autosState, autosStateAux, setAutosStateAux }) => {
 
@@ -17,8 +17,6 @@ export const Filtrado = ({ autosState, autosStateAux, setAutosStateAux }) => {
     const [filtrosColorState, setFiltrosColorState] = useState(new Set())
     const [filtrosMotorState, setFiltrosMotorState] = useState(new Set())
     const [filtrosTransmisionState, setFiltrosTransmisionState] = useState(new Set())
-
-    const filtros = [filtrosMarcaState, filtrosModeloState, filtrosYearState, filtrosColorState, filtrosMotorState, filtrosTransmisionState]
     
     /**
      * Valores
@@ -30,78 +28,43 @@ export const Filtrado = ({ autosState, autosStateAux, setAutosStateAux }) => {
     const [motoresState, setMotoresState] = useState([])
     const [transmisionesState, setTransmisionesState] = useState([])
 
+    const [dataLoaded, setDataLoaded] = useState(false); // Bandera datos cargados
+    const [activeDropdown, setActiveDropdown] = useState(null); // Lista desplegable activa
 
-    // Estado para la lista desplegable activa
-    const [activeDropdown, setActiveDropdown] = useState(null);
-
+    // Guardamos los filtros que nos interesa su estado
+    const filtros = [filtrosMarcaState, filtrosModeloState, filtrosYearState, filtrosColorState, filtrosMotorState, filtrosTransmisionState]
+ 
     useEffect(() => {
-        const fetchMarcas = async () => {
+        // Consume el servicio de automovil para cargar los datos
+        const fetchData = async () => {
             try {
-                // Esperamos la respuesta
-                const data = await getMarcas()
-                setMarcasState(data)
+                const promises = [
+                    getMarcas().then(data => setMarcasState(data)),
+                    getModelos().then(data => setModelosState(data)),
+                    getYears().then(data => setYearsState(data)),
+                    getColores().then(data => setColoresState(data)),
+                    getMotores().then(data => setMotoresState(data)),
+                    getTransmisiones().then(data => setTransmisionesState(data))
+                ];
+                await Promise.all(promises);
+                setDataLoaded(true);
             } catch (error) {
-                console.log('Error al obtener los automoviles con las imagenes: ComprarAuto.jsx', error)
+                console.error('Error al obtener los datos:', error);
+                setDataLoaded(false);
             }
-        }
-        const fetchModelos = async () => {
-            try {
-                // Esperamos la respuesta
-                const data = await getModelos()
-                setModelosState(data)
-            } catch (error) {
-                console.log('Error al obtener los modelos: ComprarAuto.jsx', error)
-            }
-        }
-        const fetchYears = async () => {
-            try {
-                // Esperamos la respuesta
-                const data = await getYears()
-                setYearsState(data)
-            } catch (error) {
-                console.log('Error al obtener los años: ComprarAuto.jsx', error)
-            }
-        }
-        const fetchColores = async () => {
-            try {
-                // Esperamos la respuesta
-                const data = await getColores()
-                setColoresState(data)
-            } catch (error) {
-                console.log('Error al obtener los colores: ComprarAuto.jsx', error)
-            }
-        }
-        const fetchMotores= async () => {
-            try {
-                // Esperamos la respuesta
-                const data = await getMotores()
-                setMotoresState(data)
-            } catch (error) {
-                console.log('Error al obtener los motores: ComprarAuto.jsx', error)
-            }
-        }
-        const fetchTransmisiones = async () => {
-            try {
-                // Esperamos la respuesta
-                const data = await getTransmisiones()
-                setTransmisionesState(data)
-            } catch (error) {
-                console.log('Error al obtener las transmisiones: ComprarAuto.jsx', error)
-            }
-        }
-        fetchMarcas()
-        fetchModelos()
-        fetchYears()
-        fetchColores()
-        fetchMotores()
-        fetchTransmisiones()
-        // console.log(filtrosMarcaState)
-        // console.log(filtrosModeloState)
-        // console.log(filtrosYearState)
-        // console.log(filtrosColorState)
-        // console.log(filtrosMotorState)
-        // console.log(filtrosTransmisionState)
-    }, [])
+        };
+
+        // Si no se han cargado los datos
+        if(!dataLoaded)
+            fetchData()
+        
+        aplicaFiltros()
+    }, filtros)
+
+    const aplicaFiltros = (filtrosMarcaState, filtrosModeloState, filtrosYearState, filtrosColorState, filtrosMotorState, filtrosTransmisionState) => {
+        // Aqui va la aplicacion de los filtros
+        console.log(filtros)
+    }
 
     /**
      * Cambia la lista desplegable activa
