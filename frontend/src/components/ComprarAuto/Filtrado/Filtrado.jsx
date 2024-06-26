@@ -58,12 +58,69 @@ export const Filtrado = ({ autosState, autosStateAux, setAutosStateAux }) => {
         if(!dataLoaded)
             fetchData()
         
-        aplicaFiltros()
+        aplicaFiltros(
+            filtrosMarcaState,
+            filtrosModeloState,
+            filtrosYearState,
+            filtrosColorState,
+            filtrosMotorState,
+            filtrosTransmisionState
+        )
     }, filtros)
 
     const aplicaFiltros = (filtrosMarcaState, filtrosModeloState, filtrosYearState, filtrosColorState, filtrosMotorState, filtrosTransmisionState) => {
-        // Aqui va la aplicacion de los filtros
-        console.log(filtros)
+        
+        let newAutos = [...autosState]
+        let autosAux = []
+        // Filtro por marca
+        if(filtrosMarcaState.size){
+            for (let marca of filtrosMarcaState){
+                autosAux = [...autosAux, ...newAutos.filter(auto => auto.marca === marca)]
+            }
+            newAutos = [...autosAux]
+            autosAux = []
+        }
+        // Filtro por modelo
+        if(filtrosModeloState.size){
+            for (let modelo of filtrosModeloState){
+                autosAux = [...autosAux, ...newAutos.filter(auto => auto.modelo === modelo)]
+            }
+            newAutos = [...autosAux]
+            autosAux = []
+        }
+        // Filtro por año
+        if(filtrosYearState.size){
+            for (let year of filtrosYearState){
+                autosAux = [...autosAux, ...newAutos.filter(auto => auto.year === year)]
+            }
+            newAutos = [...autosAux]
+            autosAux = []
+        }
+        // Filtro por color
+        if(filtrosColorState.size){
+            for (let color of filtrosColorState){
+                autosAux = [...autosAux, ...newAutos.filter(auto => auto.color === color)]
+            }
+            newAutos = [...autosAux]
+            autosAux = []
+        }
+        // Filtro por motor
+        if(filtrosMotorState.size){
+            for (let tipoMotor of filtrosMotorState){
+                autosAux = [...autosAux, ...newAutos.filter(auto => auto.tipoMotor === tipoMotor)]
+            }
+            newAutos = [...autosAux]
+            autosAux = []
+        }
+        // Filtro por transmision
+        if(filtrosTransmisionState.size){
+            for (let transmision of filtrosTransmisionState){
+                autosAux = [...autosAux, ...newAutos.filter(auto => auto.transmision === transmision)]
+            }
+            newAutos = [...autosAux]
+            autosAux = []
+        }
+        setAutosStateAux(newAutos)
     }
 
     /**

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { AutomovilCard } from '../AutomovilCard/AutomovilCard'
 import './AutomovilList.css'
 import defaultImage from '../../../assets/default.jpeg'
@@ -21,6 +21,12 @@ export const AutomovilList = ({ automoviles }) => {
   const indiceInicio = indiceCorte - autosPorPaginaState
   const newAutos = automoviles.slice(indiceInicio, indiceCorte)
 
+  // Tenemos que regresar a la primer pagina cuando cambia 
+  // la longitud del arreglo de automoviles
+  useEffect(() => {
+    setPaginaActualState(1)
+  }, [automoviles])
+
   return <>
     <div className='automovil-list-container'>
       <div className='card-grid'>
@@ -31,6 +37,8 @@ export const AutomovilList = ({ automoviles }) => {
                       marca={automovil.marca}
                       modelo={automovil.modelo}
                       year={automovil.year}
+                      tipoMotor={automovil.tipoMotor}
+                      transmision={automovil.transmision}
                       kilometraje={automovil.kilometraje}
                       fechaEntrada={new Date(automovil.fechaEntrada)}
                       precio={automovil.precio}
