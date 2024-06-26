@@ -1,0 +1,32 @@
+.paginacion-container{
+    margin: 24px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.arrow-pagination{
+    color: #fff;
+    background-color: #252525;
+    width: 44px;
+    height: 52px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.current-page-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.disabled{
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.caret{
+    fill: #fff;
+}

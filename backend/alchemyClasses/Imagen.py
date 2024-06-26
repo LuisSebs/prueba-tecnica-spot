@@ -3,6 +3,21 @@ from sqlalchemy import Column, Integer, ForeignKey, Text
 
 class Imagen(db.Model):
 
+    """
+        ORM Imagen
+
+        Representa la tabla 'Imagen' en la base de datos.
+
+        Atributos:
+        ------
+            idImagen : int
+                ID único de la imagen, se autoincrementa y es la clave primaria.
+            idAutomovil : int
+                ID del automovil al que pertenece la imagen, es una clave foranea que referencia a la tabla Automovil.
+            ruta : str
+                Ruta donde se almacena la imagen.
+    """
+
     __tablename__ = 'Imagen'
 
     idImagen = Column(Integer, primary_key=True, nullable=False, unique=True, autoincrement=True)
