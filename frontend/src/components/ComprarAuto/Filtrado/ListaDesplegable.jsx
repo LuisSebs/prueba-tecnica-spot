@@ -18,7 +18,7 @@ import { useState } from 'react'
 export const ListaDesplegable = ({ titulo, listaItemsState, filtrosState, setFiltrosState, isVisible, toggleDropdown  }) => {
 
   return (
-    <div className='dropdown-list-container'>
+    <div className={`dropdown-list-container ${isVisible ? 'list-active' : ''}`}>
         <button className='button-filter'onClick={ toggleDropdown }>
             {titulo}
             {isVisible && <CaretUp />}
