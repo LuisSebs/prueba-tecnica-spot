@@ -11,24 +11,20 @@ import { useState } from 'react'
  * @param {Object[]} listaItemsState - lista de items a agregar
  * @param {Object[]} filtrosState - lista de filtros a aplicar
  * @param {Function} setFiltrosState - funcion para modificar la lista de filtros
+ * @param {Boolean} isVisible - si la lista desplegable es visible
+ * @param {Function} toggleDropdown - función para cambiar la visibilidad
  * @return {JSX.Element} componente de lista desplegable
  */
-export const ListaDesplegable = ({ titulo, listaItemsState, filtrosState, setFiltrosState }) => {
-
-    const [isListaVisible, setIsListaVisible] = useState(false)
-
-    const toggleButton = () => {
-        setIsListaVisible(!isListaVisible)
-    }
+export const ListaDesplegable = ({ titulo, listaItemsState, filtrosState, setFiltrosState, isVisible, toggleDropdown  }) => {
 
   return (
     <div className='dropdown-list-container'>
-        <button className='button-filter'onClick={ toggleButton }>
+        <button className='button-filter'onClick={ toggleDropdown }>
             {titulo}
-            {isListaVisible && <CaretUp />}
-            {!isListaVisible && <CaretDown />}
+            {isVisible && <CaretUp />}
+            {!isVisible && <CaretDown />}
         </button>
-        <div className={`${!isListaVisible ? 'hidden' : 'dropdown-values'}`}>
+        <div className={`${isVisible ? 'dropdown-values' : 'hidden'}`}>
             {listaItemsState.map((item, index) => {
                 return  <ListaBoton 
                             key={ index }

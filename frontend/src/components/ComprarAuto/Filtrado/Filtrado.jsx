@@ -1,8 +1,7 @@
 import React from 'react'
 import { CaretDown, CaretUp } from '@phosphor-icons/react/dist/ssr'
 import './Filtrado.css'
-import { useState } from 'react'
-import { useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { getColores, getMarcas, getModelos, getMotores, getTransmisiones, getYears } from '../../../services/ServiceAutomovil.js'
 import { Ordenamiento } from './Ordenamiento.jsx'
 import { ListaDesplegable } from './ListaDesplegable.jsx'
@@ -30,6 +29,10 @@ export const Filtrado = ({ autosState, autosStateAux, setAutosStateAux }) => {
     const [coloresState, setColoresState] = useState([])
     const [motoresState, setMotoresState] = useState([])
     const [transmisionesState, setTransmisionesState] = useState([])
+
+
+    // Estado para la lista desplegable activa
+    const [activeDropdown, setActiveDropdown] = useState(null);
 
     useEffect(() => {
         const fetchMarcas = async () => {
@@ -100,44 +103,64 @@ export const Filtrado = ({ autosState, autosStateAux, setAutosStateAux }) => {
         // console.log(filtrosTransmisionState)
     }, [])
 
+    /**
+     * Cambia la lista desplegable activa
+     * @param {String} dropdownName - nombre de la lista desplegable
+     */
+    const toggleDropdown = (dropdownName) => {
+        setActiveDropdown(activeDropdown === dropdownName ? null : dropdownName);
+    };
+
   return (
     <div className='filtrado-container'>
         <div className='filtrado'>
-            <ListaDesplegable 
+            <ListaDesplegable
                 titulo={'Marca'}
                 listaItemsState={marcasState}
                 filtrosState={filtrosMarcaState}
                 setFiltrosState={setFiltrosMarcaState}
+                isVisible={activeDropdown === 'marca'}
+                toggleDropdown={() => toggleDropdown('marca')}
             />
             <ListaDesplegable 
                 titulo={'Modelo'}
                 listaItemsState={modelosState}
                 filtrosState={filtrosModeloState}
                 setFiltrosState={setFiltrosModeloState}
+                isVisible={activeDropdown === 'modelo'}
+                toggleDropdown={() => toggleDropdown('modelo')}
             />
             <ListaDesplegable 
                 titulo={'Año'}
                 listaItemsState={yearsState}
                 filtrosState={filtrosYearState}
                 setFiltrosState={setFiltrosYearState}
+                isVisible={activeDropdown === 'year'}
+                toggleDropdown={() => toggleDropdown('year')}
             />
             <ListaDesplegable 
                 titulo={'Color'}
                 listaItemsState={coloresState}
                 filtrosState={filtrosColorState}
                 setFiltrosState={setFiltrosColorState}
+                isVisible={activeDropdown === 'color'}
+                toggleDropdown={() => toggleDropdown('color')}
             />
             <ListaDesplegable 
                 titulo={'Motor'}
                 listaItemsState={motoresState}
                 filtrosState={filtrosMotorState}
                 setFiltrosState={setFiltrosMotorState}
+                isVisible={activeDropdown === 'motor'}
+                toggleDropdown={() => toggleDropdown('motor')}
             />
             <ListaDesplegable 
                 titulo={'Transmision'}
                 listaItemsState={transmisionesState}
                 filtrosState={filtrosTransmisionState}
                 setFiltrosState={setFiltrosTransmisionState}
+                isVisible={activeDropdown === 'transmision'}
+                toggleDropdown={() => toggleDropdown('transmision')}
             />
         </div>
         <Ordenamiento 
