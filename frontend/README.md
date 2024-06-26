@@ -1,8 +1,10 @@
-# React + Vite
+# Frontend: Prueba Técnica ESPOT
+## Author: Arrieta Mancera Luis Sebastian
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Para comenzar a correr el **frontend** favor de ejecutar el siguiente comando a la altura de la carpeta `src/`:
 
-Currently, two official plugins are available:
+```bash
+npm run dev
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Abre el enlace que te muestra desde la terminal en el navegador de tu preferencia (Google Chrome de preferencia)

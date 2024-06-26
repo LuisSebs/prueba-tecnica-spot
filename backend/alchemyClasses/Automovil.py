@@ -2,6 +2,36 @@ from alchemyClasses import db
 from sqlalchemy import Column, Integer, String, Float, Date
 
 class Automovil(db.Model):
+    """
+        ORM Automovil
+
+        Representa la tabla 'Automovil' en la base de datos.
+
+        Atributos:
+        ----------
+            idAutomovil : int
+                ID unico del automovil, se autoincrementa y es la clave primaria.
+            marca : str
+                Marca del automovil (maximo 64 caracteres).
+            modelo : str
+                Modelo del automovil (maximo 64 caracteres).
+            year : int
+                Año de fabricacion del automovil.
+            precio : float
+                Precio del automovil.
+            color : str
+                Color del automovil (maximo 20 caracteres).
+            tipoMotor : str
+                Tipo de motor del automovil (maximo 20 caracteres).
+            transmision : str
+                Tipo de transmisión del automovil (maximo 20 caracteres).
+            kilometraje : int
+                Kilometraje del automovil.
+            fechaEntrada : datetime.date
+                Fecha de entrada del automovil al stock.
+            stock : int
+                Cantidad en stock del automovil.
+    """
 
     __tablename__ = 'Automovil'
 
