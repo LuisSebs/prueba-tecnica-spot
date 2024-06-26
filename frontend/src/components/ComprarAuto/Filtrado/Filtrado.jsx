@@ -1,12 +1,18 @@
 import React from 'react'
-import { CaretDown, CaretUp } from '@phosphor-icons/react/dist/ssr'
 import './Filtrado.css'
 import { useState, useEffect, useRef } from 'react'
 import { Ordenamiento } from './Ordenamiento.jsx'
 import { ListaDesplegable } from './ListaDesplegable.jsx'
 import { getColores, getMarcas, getModelos, getMotores, getTransmisiones, getYears } from '../../../services/ServiceAutomovil.js'
-import { MuestraFiltros } from './MuestraFiltros'
+import { MuestraFiltros } from './MuestraFiltros.jsx'
 
+/**
+ * Componente que permite el filtrado automoviles
+ * @param {Object[]} autosState - arreglo de todos los automoviles original (no se modifica)
+ * @param {Object[]} autosStateAux - arreglo de automoviles a filtrar
+ * @param {Function} setAutosStateAux - funcion para modificar el estado de autosStateAux
+ * @returns {JSX.Element} - Componente filtrado de automoviles
+ */
 export const Filtrado = ({ autosState, autosStateAux, setAutosStateAux }) => {
 
     /**

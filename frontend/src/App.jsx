@@ -4,8 +4,9 @@ import { SearchBar } from './components/SearchBar/SearchBar.jsx'
 import { ComprarAuto } from './components/ComprarAuto/ComprarAuto.jsx'
 
 /**
- * 
- * @returns Applicacion
+ * Prueba Tecnica ESPOT
+ * @author Arrieta Mancera Luis Sebastian
+ * @returns Prueba Tecnica ESPOT
  */
 function App() {
   return <>

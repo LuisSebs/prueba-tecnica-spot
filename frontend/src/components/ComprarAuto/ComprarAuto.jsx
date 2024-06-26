@@ -1,9 +1,9 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { AutomovilList } from './AutomovilList/AutomovilList'
+import { AutomovilList } from './AutomovilList/AutomovilList.jsx'
 import { getAutomovilesConImagenes } from '../../services/ServiceAutomovil.js'
-import { Filtrado } from './Filtrado/Filtrado'
+import { Filtrado } from './Filtrado/Filtrado.jsx'
 /**
  * Componente para comprar automoviles
  * @returns {JSX.Element} Componente para comprar automoviles

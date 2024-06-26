@@ -63,6 +63,9 @@ const merge = (arreglo, by, lo, mid, hi) => {
         }
     }
 }
+/** 
+ * Predicados
+ */
 const precioBarato = (object1, object2) => object1.precio < object2.precio
 const precioCaro = (object1, object2) => object1.precio > object2.precio
 const fechaEntradaNuevo = (object1, object2) => new Date(object1.fechaEntrada) > new Date(object2.fechaEntrada)

@@ -9,6 +9,7 @@ import { useEffect } from 'react'
  * @param {Object[]} autosState - lista de automoviles original (no se modifica)
  * @param {Object[]} autosStateAux - lista de automoviles a ordenar
  * @param {Function} setAutosStateAux - funcion para modificar la lista
+ * @param {Boolean} setAutosStateAux - bandera para avisar al componente de que se ha aplicado un filtro
  * @return {JSX.Element} Componente para ordenar automoviles.
  */
 export const Ordenamiento = ({ autosState, autosStateAux, setAutosStateAux, filtroAplicadoState }) => {

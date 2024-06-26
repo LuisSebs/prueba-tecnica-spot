@@ -7,7 +7,7 @@ import { useState } from 'react'
  * @param {Function} setFiltrosState - funcion para modificar la lista de filtros
  * @param {String} texto - texto a mostrar en el boton
  * @param {Object} valor - valor a agregar a la lista de filtros al darle click
- * @return {JSX.Element} componente boton para lista desplegable
+ * @return {JSX.Element} Componente boton para lista desplegable
  */
 export const ListaBoton = ({ filtrosState, setFiltrosState, texto, valor }) => {
 

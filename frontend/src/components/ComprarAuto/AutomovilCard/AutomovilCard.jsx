@@ -12,7 +12,7 @@ import './AutomovilCard.css'
  * @param {String} marca - marca del automovil
  * @param {String} modelo - modelo del automovil
  * @param {Number} year - año del automovil
- * @param {String} year - tipo de motor del automovil
+ * @param {String} tipoMotor - tipo de motor del automovil
  * @param {String} transmision - transmision del automovil
  * @param {Number} kilometraje - kilometraje del automovil
  * @param {Date} fechaEntrada - fecha de entrada del automovil
