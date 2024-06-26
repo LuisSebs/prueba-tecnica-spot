@@ -31,5 +31,5 @@ Revisa la documentación del directorio `Docs/` para conocer más detalles sobre
 
 # Ejecución 
 
-Dentro de los directorios `backend/` y `frontend/` encontraras su respectivo `README.md` donde se especifica como ejecutar cada uno.
+Dentro de los directorios `backend/` y `frontend/` encontraras su respectivo `README.md` donde se especifica como ejecutar cada uno. Es muy importante que primero ejecutes el **backend** y después el **frontend**.
 
