@@ -2,6 +2,7 @@ import React from 'react'
 import { CaretDown, CaretUp } from '@phosphor-icons/react/dist/ssr'
 import { useState } from 'react'
 import { mergeSort } from '../../../utils/mergeSort.js'
+import { useEffect } from 'react'
 
 /**
  * Componente para ordenar automoviles
@@ -10,10 +11,20 @@ import { mergeSort } from '../../../utils/mergeSort.js'
  * @param {Function} setAutosStateAux - funcion para modificar la lista
  * @return {JSX.Element} Componente para ordenar automoviles.
  */
-export const Ordenamiento = ({ autosState, autosStateAux, setAutosStateAux }) => {
+export const Ordenamiento = ({ autosState, autosStateAux, setAutosStateAux, filtroAplicadoState }) => {
     /**Estados de interface */
     const [textOrdenarPorButton, setTextOrdenarPorButton] = useState('Ordenar Por')
     const [isOrdenarPorVisible, setIsOrdenarPorVisible] = useState(false)
+
+    /**
+     * Cada que se aplica un filtro volvemos a mostrar el texto de Ordenar Por
+     */
+    useEffect(() => {
+        const resetText = () => {
+            setTextOrdenarPorButton('OrdenarPor')
+        }
+        resetText()
+    }, [filtroAplicadoState])
 
     const ordenarPorAux = (by) => {
         setIsOrdenarPorVisible(false)

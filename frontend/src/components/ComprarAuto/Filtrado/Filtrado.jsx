@@ -31,6 +31,7 @@ export const Filtrado = ({ autosState, autosStateAux, setAutosStateAux }) => {
 
     const [dataLoaded, setDataLoaded] = useState(false); // Bandera datos cargados
     const [activeDropdown, setActiveDropdown] = useState(null); // Lista desplegable activa
+    const [isFiltroAplicado, setIsFiltroAplicado] = useState(false) // Bandera se ha aplicado filtro
 
     // Guardamos los filtros
     const filtros = [
@@ -153,6 +154,7 @@ export const Filtrado = ({ autosState, autosStateAux, setAutosStateAux }) => {
             newAutos = [...autosAux]
             autosAux = []
         }
+        setIsFiltroAplicado(!isFiltroAplicado) // Modificamos estado para informar al componente Ordenamiento
         setAutosStateAux(newAutos)
     }
 
@@ -220,6 +222,7 @@ export const Filtrado = ({ autosState, autosStateAux, setAutosStateAux }) => {
             autosState={ autosState }
             autosStateAux={ autosStateAux }
             setAutosStateAux={ setAutosStateAux }
+            filtroAplicadoState={ isFiltroAplicado }
         />
     </div>
     <MuestraFiltros 
