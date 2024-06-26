@@ -48,7 +48,7 @@ export const Ordenamiento = ({ autosState, autosStateAux, setAutosStateAux }) =>
 
   return (
     <div className='ordenamiento'>
-        <div className='dropdown-container'>
+        <div className='dropdown-ordenar-container'>
             <button className='button-sort' onClick={e => viewOrdenarPor(e)}>
                 {textOrdenarPorButton}
                 {isOrdenarPorVisible && <CaretUp />}

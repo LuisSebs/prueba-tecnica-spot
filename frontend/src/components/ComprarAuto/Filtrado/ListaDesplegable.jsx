@@ -22,7 +22,7 @@ export const ListaDesplegable = ({ titulo, listaItemsState, filtrosState, setFil
     }
 
   return (
-    <div className='dropdown-container'>
+    <div className='dropdown-list-container'>
         <button className='button-filter'onClick={ toggleButton }>
             {titulo}
             {isListaVisible && <CaretUp />}

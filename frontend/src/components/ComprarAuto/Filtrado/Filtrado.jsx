@@ -114,36 +114,6 @@ export const Filtrado = ({ autosState, autosStateAux, setAutosStateAux }) => {
                 filtrosState={filtrosModeloState}
                 setFiltrosState={setFiltrosModeloState}
             />
-            <div className='dropdown-container'>
-                <button className='button-filter'>
-                    Año
-                    <CaretDown />
-                </button>
-            </div>
-            <div className='dropdown-container'>
-                <button className='button-filter'>
-                    Color
-                    <CaretDown />
-                </button>
-            </div>
-            <div className='dropdown-container'>
-                <button className='button-filter'>
-                    Motor
-                    <CaretDown />
-                </button>
-            </div>
-            <div className='dropdown-container'>
-                <button className='button-filter'>
-                    Transmision
-                    <CaretDown />
-                </button>
-            </div>
-            <div className='dropdown-container'>
-                <button className='button-filter'>
-                    Kilometraje
-                    <CaretDown />
-                </button>                
-            </div>
         </div>
         <Ordenamiento 
             autosState={ autosState }
