@@ -1,9 +1,15 @@
 import React from 'react'
 import { CaretDown, CaretUp } from '@phosphor-icons/react/dist/ssr'
 import { useState } from 'react'
-import { mergeSort } from '../../../utils/mergeSort'
-import { useRef } from 'react'
+import { mergeSort } from '../../../utils/mergeSort.js'
 
+/**
+ * Componente para ordenar automoviles
+ * @param {Object[]} autosState - lista de automoviles original (no se modifica)
+ * @param {Object[]} autosStateAux - lista de automoviles a ordenar
+ * @param {Function} setAutosStateAux - funcion para modificar la lista
+ * @return {JSX.Element} Componente para ordenar automoviles.
+ */
 export const Ordenamiento = ({ autosState, autosStateAux, setAutosStateAux }) => {
     /**Estados de interface */
     const [textOrdenarPorButton, setTextOrdenarPorButton] = useState('Ordenar Por')
