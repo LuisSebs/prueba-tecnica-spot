@@ -19,6 +19,7 @@ export const Filtrado = ({ autosState, autosStateAux, setAutosStateAux }) => {
     const [filtrosMotorState, setFiltrosMotorState] = useState(new Set())
     const [filtrosTransmisionState, setFiltrosTransmisionState] = useState(new Set())
 
+    const filtros = [filtrosMarcaState, filtrosModeloState, filtrosYearState, filtrosColorState, filtrosMotorState, filtrosTransmisionState]
     
     /**
      * Valores
@@ -92,12 +93,12 @@ export const Filtrado = ({ autosState, autosStateAux, setAutosStateAux }) => {
         fetchMotores()
         fetchTransmisiones()
         // console.log(filtrosMarcaState)
-        console.log(filtrosModeloState)
+        // console.log(filtrosModeloState)
         // console.log(filtrosYearState)
         // console.log(filtrosColorState)
         // console.log(filtrosMotorState)
         // console.log(filtrosTransmisionState)
-    }, [filtrosMarcaState, filtrosModeloState])
+    }, [])
 
   return (
     <div className='filtrado-container'>
@@ -113,6 +114,30 @@ export const Filtrado = ({ autosState, autosStateAux, setAutosStateAux }) => {
                 listaItemsState={modelosState}
                 filtrosState={filtrosModeloState}
                 setFiltrosState={setFiltrosModeloState}
+            />
+            <ListaDesplegable 
+                titulo={'Año'}
+                listaItemsState={yearsState}
+                filtrosState={filtrosYearState}
+                setFiltrosState={setFiltrosYearState}
+            />
+            <ListaDesplegable 
+                titulo={'Color'}
+                listaItemsState={coloresState}
+                filtrosState={filtrosColorState}
+                setFiltrosState={setFiltrosColorState}
+            />
+            <ListaDesplegable 
+                titulo={'Motor'}
+                listaItemsState={motoresState}
+                filtrosState={filtrosMotorState}
+                setFiltrosState={setFiltrosMotorState}
+            />
+            <ListaDesplegable 
+                titulo={'Transmision'}
+                listaItemsState={transmisionesState}
+                filtrosState={filtrosTransmisionState}
+                setFiltrosState={setFiltrosTransmisionState}
             />
         </div>
         <Ordenamiento 
