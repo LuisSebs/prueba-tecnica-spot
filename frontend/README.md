@@ -1,7 +1,14 @@
 # Frontend: Prueba Técnica ESPOT
 ## Author: Arrieta Mancera Luis Sebastian
 
-Para comenzar a correr el **frontend** favor de ejecutar el siguiente comando a la altura de la carpeta `src/`:
+
+Para comenzar a correr el **frontend** favor de ejecutar el siguiente comando a la altura del archivo `package.json` para instalar las dependencias necesarias:
+
+```bash
+npm install
+```
+
+ Posteriormente ejecuta el frontend:
 
 ```bash
 npm run dev
