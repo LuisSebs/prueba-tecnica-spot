@@ -1,4 +1,4 @@
-# Prueba Técnia ESPOT
+# Prueba Técnica ESPOT
 ## Author: Arrieta Mancera Luis Sebastian
 
 Prueba técnica para becario en desarrollo web
@@ -25,9 +25,9 @@ En este caso de estudio, se plantea el desarrollo de una aplicación web para mo
 + Se evaluará la limpieza del código, organización y estética.
 + Se tomarán en cuenta todos los puntos adicionales que consideres pertinentes desarrollar.
 
-# Documentacion:
+# Documentación:
 
-Revisa la documentación del directorio `docs/` para conocer más detalles sobre la implementacion.
+Revisa la documentación del directorio `docs/` para conocer más detalles sobre la implementación.
 
 # Ejecución 
 
