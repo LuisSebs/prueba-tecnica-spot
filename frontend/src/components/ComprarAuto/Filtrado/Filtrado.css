@@ -1,0 +1,119 @@
+/* Filtrado */
+
+.filtrado-container *{
+    margin: 0px;
+    padding: 0px;
+}
+
+.filtrado-container {
+    margin: 16px 0px 0px 0px;
+    border-top: 1px solid #252525;
+    border-bottom: 1px solid #252525;
+    display: flex;
+}
+
+.button-filter,
+.button-sort {
+    border: none;
+    padding: 12px 25px;
+    margin: 4px 0px;
+    background: none;
+}
+
+.filtrado {
+    width: 1000px;
+}
+
+/**
+ * Ordenamiento 
+ */
+.dropdown-ordenar-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+.dropdown-ordenar-por {
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    position: absolute;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    z-index: 1;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-ordenar-por button {
+    width: 100%;
+    border: none;
+    padding: 12px 25px;
+    margin: 0px;
+}
+
+/* 
+ * Filtros 
+ */
+
+.dropdown-list-container {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-values {
+    margin: 0px;
+    padding: 8px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas */
+    gap: 8px; /* Espacio entre los botones */
+    position: absolute;
+    background-color: #f9f9f9;
+    border: 1px solid #252525;
+    border-top: none;
+    z-index: 1;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-values button {
+    border: none;
+    background-color: #fff;
+    padding: 12px 16px;
+    margin: 0;
+    border-radius: 6px;
+    border: 1px solid #252525;
+    box-sizing: border-box; /* Asegura que el padding y el border no aumenten el tamaño del botón */
+}
+
+.selected {
+    color: aliceblue;
+    background-color: #1351ec !important;
+}
+
+.hidden {
+    display: none;
+}
+
+.list-active{
+    background-color: #e0e0e0;
+}
+
+/**
+* MuestraFiltros
+*/
+
+.muestra-filtros-container{
+    width: 1280px;
+    padding: 16px 20px 0px 20px;
+}
+
+.muestra-filtros-container button{
+    margin: 0px 4px 0px 4px;
+    background-color: #fff;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    padding: 6px 4px;
+    border: none;
+    border-radius: 4px;
+}
+
+.tache {
+    fill: #1351ec;
+}

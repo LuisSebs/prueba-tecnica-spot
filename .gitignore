@@ -1,0 +1,5 @@
+backend/__pycache__/
+backend/alchemyClasses/__pycache__/
+backend/controllers/__pycache__/
+backend/models/__pycache__/
+backend/Utils/__pycache__/
