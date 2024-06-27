@@ -27,7 +27,7 @@ En este caso de estudio, se plantea el desarrollo de una aplicación web para mo
 
 # Documentacion:
 
-Revisa la documentación del directorio `Docs/` para conocer más detalles sobre la implementacion.
+Revisa la documentación del directorio `docs/` para conocer más detalles sobre la implementacion.
 
 # Ejecución 
 
