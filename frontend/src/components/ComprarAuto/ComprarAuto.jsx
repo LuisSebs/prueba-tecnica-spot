@@ -4,6 +4,8 @@ import { useState } from 'react'
 import { AutomovilList } from './AutomovilList/AutomovilList.jsx'
 import { getAutomovilesConImagenes } from '../../services/ServiceAutomovil.js'
 import { Filtrado } from './Filtrado/Filtrado.jsx'
+import './ComprarAuto.css'
+
 /**
  * Componente para comprar automoviles
  * @returns {JSX.Element} Componente para comprar automoviles
@@ -35,11 +37,13 @@ export const ComprarAuto = () => {
     }, [])
 
     return <>
-        <Filtrado 
-            autosState={ autosState }
-            autosStateAux={ autosStateAux }
-            setAutosStateAux={ setAutosStateAux }
-        />
-        <AutomovilList automoviles={autosStateAux} />
+        <div className="comprar-auto-container">
+            <Filtrado 
+                autosState={ autosState }
+                autosStateAux={ autosStateAux }
+                setAutosStateAux={ setAutosStateAux }
+            />
+            <AutomovilList automoviles={autosStateAux} />
+        </div>
     </>
 }

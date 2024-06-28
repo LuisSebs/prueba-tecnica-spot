@@ -1,9 +1,17 @@
-.automovil-list-container{
-  margin: 24px;
+.automovil-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centramos el contenido horizontalmente */
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto; /* Aseguramos que el contenedor esté centrado */
+  padding: 24px; /* Espacio alrededor del contenedor */
 }
 
 .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-  }
+  display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se ajusten en varias filas */
+  justify-content: center; /* Centramos el contenido horizontalmente */
+  gap: 20px;
+  width: 100%; /* Aseguramos que el grid ocupe todo el ancho disponible */
+}
