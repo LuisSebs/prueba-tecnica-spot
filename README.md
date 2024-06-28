@@ -29,7 +29,11 @@ En este caso de estudio, se plantea el desarrollo de una aplicación web para mo
 
 Revisa la documentación del directorio `docs/` para conocer más detalles sobre la implementación.
 
-# Ejecución 
+# Ejecución
 
-Dentro de los directorios `backend/` y `frontend/` encontraras su respectivo `README.md` donde se especifica como ejecutar cada uno. Es muy importante que primero ejecutes el **backend** y después el **frontend**.
+1. Asegúrate de tener MySQL instalado y en ejecución. Luego, ejecuta el archivo `backend/database/DDL.sql` para crear las tablas necesarias en la base de datos. Puedes hacerlo desde la línea de comandos o utilizando una herramienta de gestión de bases de datos como MySQL Workbench.
+2. Después de crear las tablas, ejecuta el archivo `backend/database/DML.sql` para poblar la base de datos con los datos iniciales.
+3. Dentro de los directorios `backend/` y `frontend/` encontraras su respectivo `README.md` donde se especifica como ejecutar cada uno. Es muy importante que primero ejecutes el **backend** y después el **frontend**.
+
+
 
